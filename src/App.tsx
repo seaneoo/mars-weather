@@ -2,18 +2,24 @@ import React from "react";
 import moment from "moment";
 import { getMarsInsight } from "./api";
 import Sol from "./Sol";
-import { convertToFahrenheit, convertToMph } from "./util";
+import { convertToFahrenheit, convertToMph, convertToPsi } from "./util";
 
 interface IState {
   data: Array<Sol>;
   celsius: Boolean;
   meters: Boolean;
+  pascal: Boolean;
 }
 
 class App extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
-    this.state = { data: [] as Array<Sol>, celsius: true, meters: true };
+    this.state = {
+      data: [] as Array<Sol>,
+      celsius: true,
+      meters: true,
+      pascal: true,
+    };
   }
 
   componentDidMount() {
@@ -22,6 +28,8 @@ class App extends React.Component<any, IState> {
       for (let i = 0; i < keys.length; i++) {
         let sol = res.data[keys[i]];
 
+        // make sure a key isn't undefined before setting it
+        // i.e. issue with 'HWS' not being valid one day
         this.setState((state) => ({
           data: [
             ...state.data,
@@ -58,16 +66,23 @@ class App extends React.Component<any, IState> {
     this.setState({ meters: !this.state.meters });
   }
 
+  switchPressure() {
+    this.setState({ pascal: !this.state.pascal });
+  }
+
   renderInSight() {
     return (
       <>
         <ul>
           {this.state.data.map((sol) => {
-            let airTempMin = sol.airTemp.min.toFixed(2),
-              airTempMax = sol.airTemp.max.toFixed(2);
+            let airTempMin = sol.airTemp.min,
+              airTempMax = sol.airTemp.max;
 
-            let windSpeedMin = sol.windSpeed.min.toFixed(2),
-              windSpeedMax = sol.windSpeed.max.toFixed(2);
+            let windSpeedMin = sol.windSpeed.min,
+              windSpeedMax = sol.windSpeed.max;
+
+            let pressureMin = sol.pressure.min,
+              pressureMax = sol.pressure.max;
 
             return (
               <li key={sol.id}>
@@ -75,24 +90,31 @@ class App extends React.Component<any, IState> {
                 {moment(sol.date).format("MMMM D")}
                 <br />
                 {this.state.celsius
-                  ? airTempMin
-                  : convertToFahrenheit(parseInt(airTempMin)).toFixed(2)}
+                  ? airTempMin.toFixed(2)
+                  : convertToFahrenheit(airTempMin).toFixed(2)}
                 ,{" "}
                 {this.state.celsius
-                  ? airTempMax
-                  : convertToFahrenheit(parseInt(airTempMax)).toFixed(2)}{" "}
+                  ? airTempMax.toFixed(2)
+                  : convertToFahrenheit(airTempMax).toFixed(2)}{" "}
                 {this.state.celsius ? "°C" : "°F"}
                 <br />
                 {this.state.meters
-                  ? windSpeedMin
-                  : convertToMph(parseInt(windSpeedMin)).toFixed(2)}
+                  ? windSpeedMin.toFixed(2)
+                  : convertToMph(windSpeedMin).toFixed(2)}
                 ,{" "}
                 {this.state.meters
-                  ? windSpeedMax
-                  : convertToMph(parseInt(windSpeedMax)).toFixed(2)}{" "}
+                  ? windSpeedMax.toFixed(2)
+                  : convertToMph(windSpeedMax).toFixed(2)}{" "}
                 {this.state.meters ? "m/s" : "mph"}
                 <br />
-                {sol.pressure.min.toFixed(2)}, {sol.pressure.max.toFixed(2)} Pa
+                {this.state.pascal
+                  ? pressureMin.toFixed(2)
+                  : convertToPsi(pressureMin).toFixed(2)}
+                ,{" "}
+                {this.state.pascal
+                  ? pressureMax.toFixed(2)
+                  : convertToPsi(pressureMax).toFixed(2)}{" "}
+                {this.state.pascal ? "Pa" : "Psi"}
               </li>
             );
           })}
@@ -116,6 +138,11 @@ class App extends React.Component<any, IState> {
             <button type="button" onClick={() => this.switchWindSpeed()}>
               Switch to{" "}
               {this.state.meters ? "Miles per Hour" : "Meters per Second"}
+            </button>
+            &nbsp;
+            <button type="button" onClick={() => this.switchPressure()}>
+              Switch to{" "}
+              {this.state.pascal ? "Pounds per Square Inch" : "Pascal"}
             </button>
             <br />
             <br />
