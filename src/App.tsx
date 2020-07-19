@@ -1,31 +1,19 @@
 import React from "react";
 import moment from "moment";
 import { getMarsInsight } from "./api";
+import Sol from "./Sol";
+import { convertToFahrenheit, convertToMph } from "./util";
 
-interface Sol {
-  id: string;
-  date: string;
-  airTemp: {
-    min: number;
-    max: number;
-    average: number;
-  };
-  windSpeed: {
-    min: number;
-    max: number;
-    average: number;
-  };
-  pressure: {
-    min: number;
-    max: number;
-    average: number;
-  };
+interface IState {
+  data: Array<Sol>;
+  celsius: Boolean;
+  meters: Boolean;
 }
 
-class App extends React.Component<any, { insight: Array<Sol> }> {
+class App extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
-    this.state = { insight: [] as Array<Sol> };
+    this.state = { data: [] as Array<Sol>, celsius: true, meters: true };
   }
 
   componentDidMount() {
@@ -35,8 +23,8 @@ class App extends React.Component<any, { insight: Array<Sol> }> {
         let sol = res.data[keys[i]];
 
         this.setState((state) => ({
-          insight: [
-            ...state.insight,
+          data: [
+            ...state.data,
             {
               id: keys[i],
               date: sol.First_UTC,
@@ -62,27 +50,50 @@ class App extends React.Component<any, { insight: Array<Sol> }> {
     });
   }
 
+  switchTemp() {
+    this.setState({ celsius: !this.state.celsius });
+  }
+
+  switchWindSpeed() {
+    this.setState({ meters: !this.state.meters });
+  }
+
   renderInSight() {
     return (
       <>
         <ul>
-          {this.state.insight.map((sol) => {
+          {this.state.data.map((sol) => {
+            let airTempMin = sol.airTemp.min.toFixed(2),
+              airTempMax = sol.airTemp.max.toFixed(2);
+
+            let windSpeedMin = sol.windSpeed.min.toFixed(2),
+              windSpeedMax = sol.windSpeed.max.toFixed(2);
+
             return (
-              <>
-                <li>
-                  <strong>Sol {sol.id}</strong> &bull;{" "}
-                  {moment(sol.date).format("MMMM D")}
-                  <br />
-                  {sol.airTemp.min.toFixed(2)}, {sol.airTemp.max.toFixed(2)} °C
-                  <br />
-                  {sol.windSpeed.min.toFixed(2)}, {sol.windSpeed.max.toFixed(2)}{" "}
-                  m/s
-                  <br />
-                  {sol.pressure.min.toFixed(2)}, {sol.pressure.max.toFixed(2)}{" "}
-                  Pa
-                </li>
+              <li key={sol.id}>
+                <strong>Sol {sol.id}</strong> &bull;{" "}
+                {moment(sol.date).format("MMMM D")}
                 <br />
-              </>
+                {this.state.celsius
+                  ? airTempMin
+                  : convertToFahrenheit(parseInt(airTempMin)).toFixed(2)}
+                ,{" "}
+                {this.state.celsius
+                  ? airTempMax
+                  : convertToFahrenheit(parseInt(airTempMax)).toFixed(2)}{" "}
+                {this.state.celsius ? "°C" : "°F"}
+                <br />
+                {this.state.meters
+                  ? windSpeedMin
+                  : convertToMph(parseInt(windSpeedMin)).toFixed(2)}
+                ,{" "}
+                {this.state.meters
+                  ? windSpeedMax
+                  : convertToMph(parseInt(windSpeedMax)).toFixed(2)}{" "}
+                {this.state.meters ? "m/s" : "mph"}
+                <br />
+                {sol.pressure.min.toFixed(2)}, {sol.pressure.max.toFixed(2)} Pa
+              </li>
             );
           })}
         </ul>
@@ -94,8 +105,23 @@ class App extends React.Component<any, { insight: Array<Sol> }> {
     return (
       <>
         <h1>Latest Weather on Mars</h1>
-        <br />
-        {this.state.insight.length > 0 ? this.renderInSight() : <p>Loading</p>}
+        {this.state.data.length < 1 ? (
+          <p>Loading</p>
+        ) : (
+          <>
+            <button type="button" onClick={() => this.switchTemp()}>
+              Switch to {this.state.celsius ? "Fahrenheit" : "Celsius"}
+            </button>
+            &nbsp;
+            <button type="button" onClick={() => this.switchWindSpeed()}>
+              Switch to{" "}
+              {this.state.meters ? "Miles per Hour" : "Meters per Second"}
+            </button>
+            <br />
+            <br />
+            {this.renderInSight()}
+          </>
+        )}
       </>
     );
   }

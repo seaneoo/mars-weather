@@ -17,4 +17,14 @@ div#mars {
 
 li {
   list-style: none;
+  margin-bottom: 1em;
+}
+
+button {
+  margin-top: 0.5em;
+  padding: 0.25em 1em;
+
+  &:not(:last-of-type) {
+    margin-right: 1em;
+  }
 }
