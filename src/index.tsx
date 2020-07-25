@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
-import "./style.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="container">
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById("mars")
 );

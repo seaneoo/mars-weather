@@ -1,14 +1,13 @@
 import React from "react";
 import moment from "moment";
-import { getMarsInsight } from "./api";
 import Sol from "./Sol";
-import { convertToFahrenheit, convertToMph, convertToPsi } from "./util";
+import { getMarsInsight } from "./api";
+import { convertToFahrenheit, convertToMph } from "./util";
 
 interface IState {
   data: Array<Sol>;
   celsius: Boolean;
   meters: Boolean;
-  pascal: Boolean;
 }
 
 class App extends React.Component<any, IState> {
@@ -18,7 +17,6 @@ class App extends React.Component<any, IState> {
       data: [] as Array<Sol>,
       celsius: true,
       meters: true,
-      pascal: true,
     };
   }
 
@@ -66,60 +64,41 @@ class App extends React.Component<any, IState> {
     this.setState({ meters: !this.state.meters });
   }
 
-  switchPressure() {
-    this.setState({ pascal: !this.state.pascal });
-  }
-
   renderInSight() {
     return (
-      <>
-        <ul>
+      <table style={{ marginTop: "1em" }}>
+        <thead>
+          <tr>
+            <th>Earth Day</th>
+            <th>Sol</th>
+            <th>Avg. Temperature ({this.state.celsius ? "°C" : "°F"})</th>
+            <th>Avg. Wind Speed ({this.state.meters ? "m/s" : "mph"})</th>
+            <th>Avg. Pressure</th>
+          </tr>
+        </thead>
+
+        <tbody>
           {this.state.data.map((sol) => {
-            let airTempMin = sol.airTemp.min,
-              airTempMax = sol.airTemp.max;
-
-            let windSpeedMin = sol.windSpeed.min,
-              windSpeedMax = sol.windSpeed.max;
-
-            let pressureMin = sol.pressure.min,
-              pressureMax = sol.pressure.max;
-
             return (
-              <li key={sol.id}>
-                <strong>Sol {sol.id}</strong> &bull;{" "}
-                {moment(sol.date).format("MMMM D")}
-                <br />
-                {this.state.celsius
-                  ? airTempMin.toFixed(2)
-                  : convertToFahrenheit(airTempMin).toFixed(2)}
-                ,{" "}
-                {this.state.celsius
-                  ? airTempMax.toFixed(2)
-                  : convertToFahrenheit(airTempMax).toFixed(2)}{" "}
-                {this.state.celsius ? "°C" : "°F"}
-                <br />
-                {this.state.meters
-                  ? windSpeedMin.toFixed(2)
-                  : convertToMph(windSpeedMin).toFixed(2)}
-                ,{" "}
-                {this.state.meters
-                  ? windSpeedMax.toFixed(2)
-                  : convertToMph(windSpeedMax).toFixed(2)}{" "}
-                {this.state.meters ? "m/s" : "mph"}
-                <br />
-                {this.state.pascal
-                  ? pressureMin.toFixed(2)
-                  : convertToPsi(pressureMin).toFixed(2)}
-                ,{" "}
-                {this.state.pascal
-                  ? pressureMax.toFixed(2)
-                  : convertToPsi(pressureMax).toFixed(2)}{" "}
-                {this.state.pascal ? "Pa" : "Psi"}
-              </li>
+              <tr key={sol.id}>
+                <td>{moment(sol.date).format("MMMM D")}</td>
+                <td>{sol.id}</td>
+                <td>
+                  {this.state.celsius
+                    ? sol.airTemp.average.toFixed(2)
+                    : convertToFahrenheit(sol.airTemp.average).toFixed(2)}
+                </td>
+                <td>
+                  {this.state.meters
+                    ? sol.windSpeed.average.toFixed(2)
+                    : convertToMph(sol.windSpeed.average).toFixed(2)}
+                </td>
+                <td>{sol.pressure.average.toFixed(2)}</td>
+              </tr>
             );
           })}
-        </ul>
-      </>
+        </tbody>
+      </table>
     );
   }
 
@@ -131,21 +110,22 @@ class App extends React.Component<any, IState> {
           <p>Loading</p>
         ) : (
           <>
-            <button type="button" onClick={() => this.switchTemp()}>
+            <button
+              type="button"
+              className="waves-effect waves-light deep-orange btn-small"
+              onClick={() => this.switchTemp()}
+            >
               Switch to {this.state.celsius ? "Fahrenheit" : "Celsius"}
             </button>
             &nbsp;
-            <button type="button" onClick={() => this.switchWindSpeed()}>
+            <button
+              type="button"
+              className="waves-effect waves-light deep-orange btn-small"
+              onClick={() => this.switchWindSpeed()}
+            >
               Switch to{" "}
               {this.state.meters ? "Miles per Hour" : "Meters per Second"}
             </button>
-            &nbsp;
-            <button type="button" onClick={() => this.switchPressure()}>
-              Switch to{" "}
-              {this.state.pascal ? "Pounds per Square Inch" : "Pascal"}
-            </button>
-            <br />
-            <br />
             {this.renderInSight()}
           </>
         )}
