@@ -1,11 +1,10 @@
 import React from "react";
 import moment from "moment";
-import Sol from "./Sol";
 import { getMarsInsight } from "./api";
 import { convertToFahrenheit, convertToMph } from "./util";
 
 interface IState {
-  data: Array<Sol>;
+  data: Array<any>;
   celsius: Boolean;
   meters: Boolean;
 }
@@ -13,47 +12,26 @@ interface IState {
 class App extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
+
     this.state = {
-      data: [] as Array<Sol>,
+      data: [] as Array<any>,
       celsius: true,
       meters: true,
     };
   }
 
   componentDidMount() {
-    getMarsInsight().then((res) => {
-      let keys = res.data.sol_keys;
-      for (let i = 0; i < keys.length; i++) {
-        let sol = res.data[keys[i]];
-
-        // make sure a key isn't undefined before setting it
-        // i.e. issue with 'HWS' not being valid one day
-        this.setState((state) => ({
-          data: [
-            ...state.data,
-            {
-              id: keys[i],
-              date: sol.First_UTC,
-              airTemp: {
-                min: sol.AT.mn,
-                max: sol.AT.mx,
-                average: sol.AT.av,
-              },
-              windSpeed: {
-                min: sol.HWS.mn,
-                max: sol.HWS.mx,
-                average: sol.HWS.av,
-              },
-              pressure: {
-                min: sol.PRE.mn,
-                max: sol.PRE.mx,
-                average: sol.PRE.av,
-              },
-            },
-          ],
-        }));
-      }
-    });
+    getMarsInsight()
+      .then((res) => {
+        let keys = res.data.sol_keys;
+        for (let i = 0; i < keys.length; i++) {
+          const sol = res.data[keys[i]];
+          this.setState({
+            data: [...this.state.data, { id: keys[i], sol: sol }],
+          });
+        }
+      })
+      .then(() => this.setState({ data: this.state.data.reverse() }));
   }
 
   switchTemp() {
@@ -66,34 +44,52 @@ class App extends React.Component<any, IState> {
 
   renderInSight() {
     return (
-      <table style={{ marginTop: "1em" }}>
+      <table className="striped responsive-table" style={{ marginTop: "1em" }}>
         <thead>
           <tr>
             <th>Earth Day</th>
             <th>Sol</th>
             <th>Avg. Temperature ({this.state.celsius ? "°C" : "°F"})</th>
             <th>Avg. Wind Speed ({this.state.meters ? "m/s" : "mph"})</th>
-            <th>Avg. Pressure</th>
+            <th>Avg. Pressure (Pa)</th>
           </tr>
         </thead>
 
         <tbody>
-          {this.state.data.map((sol) => {
+          {this.state.data.map((e) => {
             return (
-              <tr key={sol.id}>
-                <td>{moment(sol.date).format("MMMM D")}</td>
-                <td>{sol.id}</td>
+              <tr key={e.id}>
+                <td>{moment(e.sol.First_UTC).format("MMMM D")}</td>
+                <td>{e.id}</td>
                 <td>
-                  {this.state.celsius
-                    ? sol.airTemp.average.toFixed(2)
-                    : convertToFahrenheit(sol.airTemp.average).toFixed(2)}
+                  {e.sol.AT !== undefined ? (
+                    <>
+                      {this.state.celsius
+                        ? e.sol.AT.av.toFixed(2)
+                        : convertToFahrenheit(e.sol.AT.av).toFixed(2)}
+                    </>
+                  ) : (
+                    <>-</>
+                  )}
                 </td>
                 <td>
-                  {this.state.meters
-                    ? sol.windSpeed.average.toFixed(2)
-                    : convertToMph(sol.windSpeed.average).toFixed(2)}
+                  {e.sol.HWS !== undefined ? (
+                    <>
+                      {this.state.meters
+                        ? e.sol.HWS.av.toFixed(2)
+                        : convertToMph(e.sol.HWS.av).toFixed(2)}
+                    </>
+                  ) : (
+                    <>-</>
+                  )}
                 </td>
-                <td>{sol.pressure.average.toFixed(2)}</td>
+                <td>
+                  {e.sol.PRE !== undefined ? (
+                    <>{e.sol.PRE.av.toFixed(2)}</>
+                  ) : (
+                    <>-</>
+                  )}
+                </td>
               </tr>
             );
           })}
@@ -112,7 +108,7 @@ class App extends React.Component<any, IState> {
           <>
             <button
               type="button"
-              className="waves-effect waves-light deep-orange btn-small"
+              className="btn-small"
               onClick={() => this.switchTemp()}
             >
               Switch to {this.state.celsius ? "Fahrenheit" : "Celsius"}
@@ -120,13 +116,23 @@ class App extends React.Component<any, IState> {
             &nbsp;
             <button
               type="button"
-              className="waves-effect waves-light deep-orange btn-small"
+              className="btn-small"
               onClick={() => this.switchWindSpeed()}
             >
               Switch to{" "}
               {this.state.meters ? "Miles per Hour" : "Meters per Second"}
             </button>
             {this.renderInSight()}
+            <p>
+              Data from{" "}
+              <a
+                href="https://api.nasa.gov/#insight"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NASA InSight API
+              </a>
+            </p>
           </>
         )}
       </>
