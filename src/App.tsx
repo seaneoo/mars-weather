@@ -108,7 +108,8 @@ class App extends React.Component<any, IState> {
           <>
             <button
               type="button"
-              className="btn-small"
+              className="btn-small btn-flat"
+              style={{ marginRight: ".5rem" }}
               onClick={() => this.switchTemp()}
             >
               Switch to {this.state.celsius ? "Fahrenheit" : "Celsius"}
@@ -116,7 +117,7 @@ class App extends React.Component<any, IState> {
             &nbsp;
             <button
               type="button"
-              className="btn-small"
+              className="btn-small btn-flat"
               onClick={() => this.switchWindSpeed()}
             >
               Switch to{" "}
@@ -124,13 +125,22 @@ class App extends React.Component<any, IState> {
             </button>
             {this.renderInSight()}
             <p>
-              Data from{" "}
+              Weather recorded from{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Elysium_Planitia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Elysium Planitia
+              </a>
+              <br />
+              Data obtained from{" "}
               <a
                 href="https://api.nasa.gov/#insight"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                NASA InSight API
+                NASA's InSight API
               </a>
             </p>
           </>

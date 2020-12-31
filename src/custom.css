@@ -1,0 +1,27 @@
+:root {
+  --orange: #e77d11;
+  --orange-light: #eea458;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.btn,
+.btn-large,
+.btn-small {
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  border-radius: 1rem;
+}
+
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover,
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus {
+  background-color: transparent;
+  color: var(--orange-light);
+  border-color: var(--orange-light);
+}
