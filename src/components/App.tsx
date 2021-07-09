@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Grid, Heading } from "@chakra-ui/react";
-import { getMarsWeather, Sole } from "../api";
+import { getMarsWeather, Sol } from "../api";
 import WeatherTable from "./WeatherTable";
 
 const App = () => {
-  const [data, setData] = useState<Sole[]>([]);
+  const [data, setData] = useState<Sol[]>([]);
 
   useEffect(() => {
     getMarsWeather().then((res) =>

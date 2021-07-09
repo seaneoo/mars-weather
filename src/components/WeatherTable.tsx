@@ -8,10 +8,10 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { Sole } from "../api";
+import { Sol } from "../api";
 
 type Props = {
-  data: Sole[];
+  data: Sol[];
 };
 
 const WeatherTable = ({ data }: Props) => {

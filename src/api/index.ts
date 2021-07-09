@@ -4,7 +4,7 @@ const API = new URL(
   "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json"
 );
 
-export type Sole = {
+export type Sol = {
   terrestrial_date: string;
   sol: string;
   season: string;
@@ -22,12 +22,12 @@ export type Sole = {
   max_gts_temp: string;
 };
 
-export const getMarsWeather = (): Promise<Array<Sole>> => {
+export const getMarsWeather = (): Promise<Array<Sol>> => {
   return new Promise(async (resolve, reject) => {
     await fetch(API)
       .then((res) => res.json())
       .then((data) => {
-        resolve(data.soles as Array<Sole>);
+        resolve(data.soles as Array<Sol>);
         return;
       })
       .catch((err) => {
