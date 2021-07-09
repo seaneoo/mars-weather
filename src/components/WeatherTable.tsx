@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Sol } from "../api";
+import WeatherRow from "./WeatherRow";
 
 type Props = {
   data: Sol[];
@@ -35,7 +36,12 @@ const WeatherTable = ({ data }: Props) => {
           <Th isNumeric>Avg. Temp</Th>
         </Tr>
       </Thead>
-      <Tbody>{/* Populte Tbody with api data */}</Tbody>
+      <Tbody>
+        {data.length > 0 &&
+          data.map((d) => {
+            return <WeatherRow key={d.sol} data={d} />;
+          })}
+      </Tbody>
     </Table>
   );
 };
