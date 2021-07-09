@@ -7,7 +7,6 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { Sol } from "../api";
 import WeatherRow from "./WeatherRow";
 
@@ -16,10 +15,6 @@ type Props = {
 };
 
 const WeatherTable = ({ data }: Props) => {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <Table>
       <TableCaption>
