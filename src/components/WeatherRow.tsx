@@ -23,6 +23,7 @@ const WeatherRow = ({ data }: Props) => {
       <Td>{getTerrestrialDate()}</Td>
       <Td isNumeric>{data.sol}</Td>
       <Td isNumeric>{getAvgTemp()}</Td>
+      <Td isNumeric>{data.pressure}</Td>
     </Tr>
   );
 };

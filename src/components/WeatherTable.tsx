@@ -29,6 +29,7 @@ const WeatherTable = ({ data }: Props) => {
           <Th>Earth Day</Th>
           <Th isNumeric>Sol</Th>
           <Th isNumeric>Avg. Temp °C</Th>
+          <Th isNumeric>Pressure Pa</Th>
         </Tr>
       </Thead>
       <Tbody>
