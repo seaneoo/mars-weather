@@ -17,7 +17,11 @@ const App = () => {
       <div>
         <Heading>Latest Weather on Mars</Heading>
         <br />
-        <WeatherTable data={data} />
+        {data.length > 0 ? (
+          <WeatherTable data={data} />
+        ) : (
+          <Heading size="md">Loading...</Heading>
+        )}
       </div>
     </Grid>
   );
