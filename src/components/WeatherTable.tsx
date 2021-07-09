@@ -41,6 +41,8 @@ const WeatherTable = ({ data }: Props) => {
               Pa
             </chakra.span>
           </Th>
+          <Th isNumeric>Sunrise</Th>
+          <Th isNumeric>Sunset</Th>
         </Tr>
       </Thead>
       <Tbody>

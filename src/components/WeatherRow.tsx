@@ -24,6 +24,8 @@ const WeatherRow = ({ data }: Props) => {
       <Td isNumeric>{data.sol}</Td>
       <Td isNumeric>{getAvgTemp()}</Td>
       <Td isNumeric>{data.pressure}</Td>
+      <Td isNumeric>{data.sunrise}</Td>
+      <Td isNumeric>{data.sunset}</Td>
     </Tr>
   );
 };
