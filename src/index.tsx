@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 import "./custom.css";
 
@@ -13,5 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("mars")
 );
-
-serviceWorker.unregister();
