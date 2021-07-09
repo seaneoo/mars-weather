@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Grid height="100vh" justifyContent="center" alignItems="center">
       <div>
-        <Heading>Latest Weather on Mars</Heading>
+        <Heading textAlign="center">Latest Weather on Mars</Heading>
         <br />
         {data.length > 0 ? (
           <WeatherTable data={data} />
