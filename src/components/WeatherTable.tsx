@@ -1,4 +1,5 @@
 import {
+  chakra,
   Link,
   Table,
   TableCaption,
@@ -28,8 +29,18 @@ const WeatherTable = ({ data }: Props) => {
         <Tr>
           <Th>Earth Day</Th>
           <Th isNumeric>Sol</Th>
-          <Th isNumeric>Avg. Temp °C</Th>
-          <Th isNumeric>Pressure Pa</Th>
+          <Th isNumeric>
+            Avg. Temp{" "}
+            <chakra.span color="gray.500" style={{ textTransform: "initial" }}>
+              °C
+            </chakra.span>
+          </Th>
+          <Th isNumeric>
+            Pressure{" "}
+            <chakra.span color="gray.500" style={{ textTransform: "initial" }}>
+              Pa
+            </chakra.span>
+          </Th>
         </Tr>
       </Thead>
       <Tbody>
