@@ -26,9 +26,9 @@ const WeatherTable = ({ data }: Props) => {
       </TableCaption>
       <Thead>
         <Tr>
-          <Th isNumeric>Earth Day</Th>
+          <Th>Earth Day</Th>
           <Th isNumeric>Sol</Th>
-          <Th isNumeric>Avg. Temp</Th>
+          <Th isNumeric>Avg. Temp °C</Th>
         </Tr>
       </Thead>
       <Tbody>

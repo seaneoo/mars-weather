@@ -21,8 +21,8 @@ const WeatherRow = ({ data }: Props) => {
   return (
     <Tr>
       <Td>{getTerrestrialDate()}</Td>
-      <Td>{data.sol}</Td>
-      <Td>{getAvgTemp()}</Td>
+      <Td isNumeric>{data.sol}</Td>
+      <Td isNumeric>{getAvgTemp()}</Td>
     </Tr>
   );
 };
