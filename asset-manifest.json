@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/mars-weather/static/js/main.56faa8e7.chunk.js",
-    "main.js.map": "/mars-weather/static/js/main.56faa8e7.chunk.js.map",
+    "main.js": "/mars-weather/static/js/main.225cb4f3.chunk.js",
+    "main.js.map": "/mars-weather/static/js/main.225cb4f3.chunk.js.map",
     "runtime-main.js": "/mars-weather/static/js/runtime-main.8381be21.js",
     "runtime-main.js.map": "/mars-weather/static/js/runtime-main.8381be21.js.map",
-    "static/js/2.469e4ee4.chunk.js": "/mars-weather/static/js/2.469e4ee4.chunk.js",
-    "static/js/2.469e4ee4.chunk.js.map": "/mars-weather/static/js/2.469e4ee4.chunk.js.map",
+    "static/js/2.7ee9524c.chunk.js": "/mars-weather/static/js/2.7ee9524c.chunk.js",
+    "static/js/2.7ee9524c.chunk.js.map": "/mars-weather/static/js/2.7ee9524c.chunk.js.map",
     "index.html": "/mars-weather/index.html",
-    "static/js/2.469e4ee4.chunk.js.LICENSE.txt": "/mars-weather/static/js/2.469e4ee4.chunk.js.LICENSE.txt"
+    "static/js/2.7ee9524c.chunk.js.LICENSE.txt": "/mars-weather/static/js/2.7ee9524c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8381be21.js",
-    "static/js/2.469e4ee4.chunk.js",
-    "static/js/main.56faa8e7.chunk.js"
+    "static/js/2.7ee9524c.chunk.js",
+    "static/js/main.225cb4f3.chunk.js"
   ]
 }
