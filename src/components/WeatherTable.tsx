@@ -9,13 +9,15 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { Sol } from "../api";
+import { TemperatureUnit } from "../constants";
 import WeatherRow from "./WeatherRow";
 
 type Props = {
   data: Sol[];
+  tempUnit: TemperatureUnit;
 };
 
-const WeatherTable = ({ data }: Props) => {
+const WeatherTable = ({ data, tempUnit }: Props) => {
   return (
     <Table>
       <TableCaption>
@@ -32,7 +34,7 @@ const WeatherTable = ({ data }: Props) => {
           <Th isNumeric>
             Avg. Temp{" "}
             <chakra.span color="gray.500" style={{ textTransform: "initial" }}>
-              °C
+              {tempUnit === TemperatureUnit.Celsius ? "°C" : "°F"}
             </chakra.span>
           </Th>
           <Th isNumeric>
@@ -48,7 +50,7 @@ const WeatherTable = ({ data }: Props) => {
       <Tbody>
         {data.length > 0 &&
           data.map((d) => {
-            return <WeatherRow key={d.sol} data={d} />;
+            return <WeatherRow key={d.sol} data={d} tempUnit={tempUnit} />;
           })}
       </Tbody>
     </Table>
