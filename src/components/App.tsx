@@ -1,9 +1,9 @@
-import { Fragment, useEffect, useState } from "react";
-import { Button, Flex, Grid, Heading, useColorMode } from "@chakra-ui/react";
-import { SunIcon, MoonIcon, RepeatIcon } from "@chakra-ui/icons";
-import { getMarsWeather, Sol } from "../api";
-import WeatherTable from "./WeatherTable";
-import { TemperatureUnit } from "../constants";
+import { Fragment, useEffect, useState } from 'react';
+import { Button, Flex, Grid, Heading, useColorMode } from '@chakra-ui/react';
+import { SunIcon, MoonIcon, RepeatIcon } from '@chakra-ui/icons';
+import { getMarsWeather, Sol } from '../api';
+import WeatherTable from './WeatherTable';
+import { TemperatureUnit } from '../constants';
 
 const App = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -30,7 +30,7 @@ const App = () => {
   return (
     <Fragment>
       <Button onClick={toggleColorMode} pos="absolute" top={8} right={8}>
-        {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+        {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
       </Button>
 
       <Grid height="100vh" justifyContent="center" alignItems="center">
@@ -42,11 +42,10 @@ const App = () => {
             <Button
               onClick={toggleTemperatureUnit}
               size="sm"
-              colorScheme="orange"
-            >
+              colorScheme="orange">
               <RepeatIcon />
               &nbsp;
-              {tempUnit === TemperatureUnit.Celsius ? "Fahrenheit" : "Celsius"}
+              {tempUnit === TemperatureUnit.Celsius ? 'Fahrenheit' : 'Celsius'}
             </Button>
           </Flex>
           <br />

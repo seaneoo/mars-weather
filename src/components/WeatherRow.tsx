@@ -1,8 +1,8 @@
-import { chakra, Flex, Td, Tr } from "@chakra-ui/react";
-import { ArrowUpIcon, ArrowDownIcon } from "@chakra-ui/icons";
-import { format, parse } from "date-fns";
-import { Sol } from "../api";
-import { TemperatureUnit } from "../constants";
+import { chakra, Flex, Td, Tr } from '@chakra-ui/react';
+import { ArrowUpIcon, ArrowDownIcon } from '@chakra-ui/icons';
+import { format, parse } from 'date-fns';
+import { Sol } from '../api';
+import { TemperatureUnit } from '../constants';
 
 type Props = {
   data: Sol;
@@ -11,8 +11,8 @@ type Props = {
 
 const WeatherRow = ({ data, tempUnit }: Props) => {
   const getTerrestrialDate = () => {
-    const d = parse(data.terrestrial_date, "yyyy-MM-dd", new Date());
-    return format(d, "MMMM d, yyyy");
+    const d = parse(data.terrestrial_date, 'yyyy-MM-dd', new Date());
+    return format(d, 'MMMM d, yyyy');
   };
 
   const getAvgTemp = () => {

@@ -1,7 +1,7 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const API = new URL(
-  "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json"
+  'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json'
 );
 
 export type Sol = {

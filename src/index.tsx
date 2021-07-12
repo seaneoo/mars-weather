@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "./theme";
-import App from "./components/App";
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+import App from './components/App';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,5 +11,5 @@ ReactDOM.render(
       <App />
     </ChakraProvider>
   </React.StrictMode>,
-  document.getElementById("mars")
+  document.getElementById('mars')
 );
