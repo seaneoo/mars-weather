@@ -19,6 +19,18 @@ function WeatherTable() {
   /** Retrieve the 7 most recent weather readings. */
   const latest = data?.soles.slice(0, 7);
 
+  /**
+   * Converts Celsius into Fahrenheit.
+   * @param c The temperature, in Celsius.
+   * @param round If the result should be rounded up/down.
+   * @returns
+   */
+  const convertToF = (c: string, round: boolean = false) => {
+    const f: number = Number.parseInt(c) * (9 / 5) + 32;
+    if (round) return Math.round(f);
+    return f;
+  };
+
   if (isLoading) return <></>;
 
   return (
@@ -48,8 +60,8 @@ function WeatherTable() {
             <tr key={i}>
               <td>{reading.sol}</td>
               <td>{reading.terrestrial_date}</td>
-              <td>{reading.max_temp}</td>
-              <td>{reading.min_temp}</td>
+              <td>{convertToF(reading.max_temp, true)}</td>
+              <td>{convertToF(reading.min_temp, true)}</td>
               <td>{reading.pressure}</td>
               <td>{reading.sunrise}</td>
               <td>{reading.sunset}</td>
