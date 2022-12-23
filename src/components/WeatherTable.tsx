@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
 
@@ -14,6 +15,8 @@ const _Table = styled.table`
 `;
 
 function WeatherTable() {
+  const [tempUnit, setTempUnit] = useState(0);
+
   const { data, isLoading } = useGetWeatherQuery();
 
   /** Retrieve the 7 most recent weather readings. */
@@ -31,6 +34,13 @@ function WeatherTable() {
     return f;
   };
 
+  /**
+   * Switch the current temperature unit (Celsius ↔ Fahrenheit).
+   */
+  const switchTempUnit = () => {
+    setTempUnit(tempUnit === 0 ? 1 : 0);
+  };
+
   if (isLoading) return <></>;
 
   return (
@@ -39,7 +49,16 @@ function WeatherTable() {
         <tr>
           <th>Sol</th>
           <th>Earth Day</th>
-          <th colSpan={2}>Air Temperature</th>
+          <th colSpan={2}>
+            Air Temperature (°{tempUnit === 0 ? "C" : "F"}){" "}
+            <button
+              type="button"
+              title="Switch between Celsius and Fahrenheit"
+              onClick={switchTempUnit}
+            >
+              Switch unit
+            </button>
+          </th>
           <th>Pressure</th>
           <th>Sunrise</th>
           <th>Sunset</th>
@@ -60,8 +79,17 @@ function WeatherTable() {
             <tr key={i}>
               <td>{reading.sol}</td>
               <td>{reading.terrestrial_date}</td>
-              <td>{convertToF(reading.max_temp, true)}</td>
-              <td>{convertToF(reading.min_temp, true)}</td>
+              <td>
+                {tempUnit === 0
+                  ? reading.max_temp
+                  : convertToF(reading.max_temp, true)}
+              </td>
+              <td>
+                {" "}
+                {tempUnit === 0
+                  ? reading.min_temp
+                  : convertToF(reading.min_temp, true)}
+              </td>
               <td>{reading.pressure}</td>
               <td>{reading.sunrise}</td>
               <td>{reading.sunset}</td>
