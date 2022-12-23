@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`${css`
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #f5f5f5;
+    background-color: #121212;
   }
 `}`;
 

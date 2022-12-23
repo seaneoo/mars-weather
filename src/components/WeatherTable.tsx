@@ -3,14 +3,25 @@ import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
 
 const _Table = styled.table`
+  border-collapse: collapse;
   display: block;
   overflow-x: auto;
   white-space: nowrap;
+  border: 1px solid;
+  border-radius: 4px;
 
-  &,
+  tr {
+    border-bottom: 1px solid #f5f5f580;
+  }
+
   th,
   td {
-    border: 1px solid;
+    padding: 0.5rem 0.75rem;
+  }
+
+  th + th,
+  td + td {
+    border-left: 1px solid #f5f5f580;
   }
 `;
 
