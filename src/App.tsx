@@ -1,10 +1,18 @@
+import styled from "styled-components";
 import WeatherTable from "./components/WeatherTable";
+
+const _Main = styled.main`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
   return (
-    <main>
+    <_Main>
       <WeatherTable />
-    </main>
+    </_Main>
   );
 }
 
