@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
 
 const _Table = styled.table`
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+
   &,
   th,
   td {
