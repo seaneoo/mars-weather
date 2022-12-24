@@ -5,6 +5,7 @@ import WeatherTable from "./WeatherTable";
 const _Main = styled.main`
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -36,6 +37,7 @@ const _Wrapper = styled.div`
 
 const _Title = styled.h1`
   display: inline-block;
+  align-self: flex-start;
   color: #f6d365;
   background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   -webkit-background-clip: text;
@@ -49,10 +51,12 @@ function App() {
   return (
     <_Main>
       {!isLoading ? (
-        <_Wrapper>
+        <>
           <_Title>Last 7 Days at the Gale Crater</_Title>
-          <WeatherTable />
-        </_Wrapper>
+          <_Wrapper>
+            <WeatherTable />
+          </_Wrapper>
+        </>
       ) : (
         <span>Loading</span>
       )}
