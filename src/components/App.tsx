@@ -39,6 +39,7 @@ const _Title = styled.h1`
   display: inline-block;
   align-self: flex-start;
   color: #f6d365;
+  font-size: 3rem;
   background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -52,7 +53,7 @@ function App() {
     <_Main>
       {!isLoading ? (
         <>
-          <_Title>Last 7 Days at the Gale Crater</_Title>
+          <_Title>The Last 7 Days on Mars</_Title>
           <_Wrapper>
             <WeatherTable />
           </_Wrapper>

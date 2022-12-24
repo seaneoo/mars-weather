@@ -8,6 +8,14 @@ const _Table = styled.table`
   border: 1px solid;
   border-radius: 4px;
 
+  caption {
+    caption-side: bottom;
+    margin-top: 1rem;
+    font-size: 87.5%;
+    text-align: left;
+    white-space: normal;
+  }
+
   tr {
     border-bottom: 1px solid #f5f5f580;
   }
@@ -98,6 +106,16 @@ function WeatherTable() {
           );
         })}
       </tbody>
+      <caption>
+        Weather reported from the Gale crater by the Mars Curiosity Rover.{" "}
+        <a
+          href="https://mars.nasa.gov/msl/home/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read more
+        </a>
+      </caption>
     </_Table>
   );
 }

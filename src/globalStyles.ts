@@ -20,6 +20,15 @@ const GlobalStyles = createGlobalStyle`${css`
     color: #f5f5f5;
     background-color: #121212;
   }
+
+  a {
+    color: #f6d365;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `}`;
 
 export default GlobalStyles;
