@@ -4,7 +4,6 @@ import { useGetWeatherQuery } from "../api";
 
 const _Table = styled.table`
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid;
   border-radius: 4px;

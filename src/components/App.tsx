@@ -7,11 +7,29 @@ const _Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
   padding: 1rem;
+
+  @media screen and (min-width: 768px) {
+    width: 720px;
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 960px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1140px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 1320px;
+  }
 `;
 
 const _Wrapper = styled.div`
   display: block;
+  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
 `;
@@ -30,18 +48,14 @@ function App() {
 
   return (
     <_Main>
-      <_Wrapper>
-        {!isLoading ? (
-          <>
-            <_Title>Last 7 Days at the Gale Crater</_Title>
-            <WeatherTable />
-          </>
-        ) : (
-          <>
-            <span>Loading</span>
-          </>
-        )}
-      </_Wrapper>
+      {!isLoading ? (
+        <_Wrapper>
+          <_Title>Last 7 Days at the Gale Crater</_Title>
+          <WeatherTable />
+        </_Wrapper>
+      ) : (
+        <span>Loading</span>
+      )}
     </_Main>
   );
 }
