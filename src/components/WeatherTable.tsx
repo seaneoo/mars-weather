@@ -58,9 +58,9 @@ function WeatherTable() {
     <_Table>
       <thead>
         <tr>
-          <th>Sol</th>
-          <th>Earth Day</th>
-          <th colSpan={2}>
+          <th title={data?.descriptions.sol_desc_en}>Sol</th>
+          <th title={data?.descriptions.terrestrial_date_desc_en}>Earth Day</th>
+          <th title={data?.descriptions.temp_desc_en} colSpan={2}>
             Air Temperature (°{tempUnit === 0 ? "C" : "F"}){" "}
             <button
               type="button"
@@ -70,9 +70,9 @@ function WeatherTable() {
               Switch unit
             </button>
           </th>
-          <th>Pressure</th>
-          <th>Sunrise</th>
-          <th>Sunset</th>
+          <th title={data?.descriptions.pressure_desc_en}>Pressure</th>
+          <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunrise</th>
+          <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunset</th>
         </tr>
         <tr>
           <th></th>

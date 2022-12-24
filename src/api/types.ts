@@ -1,6 +1,24 @@
 export type MSLFeed = {
+  /** Descriptions of different properties in this API. */
+  descriptions: Descriptions;
   /** Array of objects, each representing one Mars day. */
   soles: Sol[];
+};
+
+export type Descriptions = {
+  disclaimer_en: string;
+  sol_desc_en: string;
+  terrestrial_date_desc_en: string;
+  temp_desc_en: string;
+  pressure_desc_en: string;
+  abs_humidity_desc_en: string;
+  wind_desc_en: string;
+  gts_temp_desc_en: string;
+  local_uv_irradiance_index_desc_en: string;
+  atmo_opacity_desc_en: string;
+  ls_desc_en: string;
+  season_desc_en: string;
+  sunrise_sunset_desc_en: string;
 };
 
 export type Sol = {
