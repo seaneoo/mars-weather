@@ -1,5 +1,7 @@
 # Mars Weather
 
+![GitHub issues](https://img.shields.io/github/issues/seaneoo/mars?style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/seaneoo/mars?style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/seaneoo/mars?style=flat-square) ![License](https://img.shields.io/github/license/seaneoo/mars?color=9c9c9c&style=flat-square)
+
 Anim mollit id qui ut laboris adipisicing reprehenderit velit reprehenderit nisi. Deserunt laborum nostrud duis velit occaecat sit. Sit fugiat fugiat eu labore adipisicing ut adipisicing eiusmod esse.
 
 ## License
