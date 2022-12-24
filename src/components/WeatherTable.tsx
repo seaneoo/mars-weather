@@ -25,7 +25,7 @@ const _Table = styled.table`
 function WeatherTable() {
   const [tempUnit, setTempUnit] = useState(0);
 
-  const { data, isLoading } = useGetWeatherQuery();
+  const { data } = useGetWeatherQuery();
 
   /** Retrieve the 7 most recent weather readings. */
   const latest = data?.soles.slice(0, 7);
@@ -48,8 +48,6 @@ function WeatherTable() {
   const switchTempUnit = () => {
     setTempUnit(tempUnit === 0 ? 1 : 0);
   };
-
-  if (isLoading) return <></>;
 
   return (
     <_Table>

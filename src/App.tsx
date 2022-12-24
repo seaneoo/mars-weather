@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useGetWeatherQuery } from "./api";
 import WeatherTable from "./components/WeatherTable";
 
 const _Main = styled.main`
@@ -25,11 +26,21 @@ const _Title = styled.h1`
 `;
 
 function App() {
+  const { isLoading } = useGetWeatherQuery();
+
   return (
     <_Main>
       <_Wrapper>
-        <_Title>Last 7 Days at the Gale Crater</_Title>
-        <WeatherTable />
+        {!isLoading ? (
+          <>
+            <_Title>Last 7 Days at the Gale Crater</_Title>
+            <WeatherTable />
+          </>
+        ) : (
+          <>
+            <span>Loading</span>
+          </>
+        )}
       </_Wrapper>
     </_Main>
   );
