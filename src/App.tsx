@@ -8,6 +8,12 @@ const _Main = styled.main`
   align-items: center;
 `;
 
+const _Wrapper = styled.div`
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+`;
+
 const _Title = styled.h1`
   display: inline-block;
   color: #f6d365;
@@ -20,10 +26,10 @@ const _Title = styled.h1`
 function App() {
   return (
     <_Main>
-      <div>
+      <_Wrapper>
         <_Title>Last 7 Days at the Gale Crater</_Title>
         <WeatherTable />
-      </div>
+      </_Wrapper>
     </_Main>
   );
 }
