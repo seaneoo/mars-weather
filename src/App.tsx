@@ -6,6 +6,7 @@ const _Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 `;
 
 const _Wrapper = styled.div`

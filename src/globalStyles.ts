@@ -1,6 +1,12 @@
 import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`${css`
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html,
   body,
   #app {
