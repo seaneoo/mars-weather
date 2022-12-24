@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
 
 const _Table = styled.table`
+  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid;
   border-radius: 4px;
@@ -56,27 +58,21 @@ function WeatherTable() {
           <th title={data?.descriptions.sol_desc_en}>Sol</th>
           <th title={data?.descriptions.terrestrial_date_desc_en}>Earth Day</th>
           <th title={data?.descriptions.temp_desc_en} colSpan={2}>
-            Air Temperature (°{tempUnit === 0 ? "C" : "F"}){" "}
-            <button
-              type="button"
-              title="Switch between Celsius and Fahrenheit"
-              onClick={switchTempUnit}
-            >
-              Switch unit
-            </button>
+            Air Temperature (
+            <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
+              °{tempUnit === 0 ? "C" : "F"}
+            </span>
+            )
           </th>
-          <th title={data?.descriptions.pressure_desc_en}>Pressure</th>
+          <th title={data?.descriptions.pressure_desc_en}>Pressure (Pa)</th>
           <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunrise</th>
           <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunset</th>
         </tr>
         <tr>
-          <th></th>
-          <th></th>
+          <th colSpan={2}></th>
           <th>Max.</th>
           <th>Min.</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th colSpan={3}></th>
         </tr>
       </thead>
       <tbody>
