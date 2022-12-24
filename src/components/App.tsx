@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useGetWeatherQuery } from "./api";
-import WeatherTable from "./components/WeatherTable";
+import { useGetWeatherQuery } from "../api";
+import WeatherTable from "./WeatherTable";
 
 const _Main = styled.main`
   height: 100%;

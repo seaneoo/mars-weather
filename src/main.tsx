@@ -3,7 +3,7 @@ import "normalize.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { NASA } from "./api";
-import App from "./App";
+import App from "./components/App";
 import GlobalStyles from "./globalStyles";
 
 ReactDOM.createRoot(document.getElementById("app") as HTMLElement).render(
