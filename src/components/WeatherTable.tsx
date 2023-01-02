@@ -65,11 +65,22 @@ function WeatherTable() {
           <th title={data?.descriptions.sol_desc_en}>Sol</th>
           <th title={data?.descriptions.terrestrial_date_desc_en}>Earth Day</th>
           <th title={data?.descriptions.temp_desc_en} colSpan={2}>
-            Air Temperature (
-            <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
-              °{tempUnit === 0 ? "C" : "F"}
+            <span>
+              Air Temperature (
+              <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
+                °{tempUnit === 0 ? "C" : "F"}
+              </span>
+              )
             </span>
-            )
+          </th>
+          <th title={data?.descriptions.gts_temp_desc_en} colSpan={2}>
+            <span>
+              Ground Temperature (
+              <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
+                °{tempUnit === 0 ? "C" : "F"}
+              </span>
+              )
+            </span>
           </th>
           <th title={data?.descriptions.pressure_desc_en}>Pressure (Pa)</th>
           <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunrise</th>
@@ -77,6 +88,8 @@ function WeatherTable() {
         </tr>
         <tr>
           <th colSpan={2}></th>
+          <th>Max.</th>
+          <th>Min.</th>
           <th>Max.</th>
           <th>Min.</th>
           <th colSpan={3}></th>
@@ -94,10 +107,19 @@ function WeatherTable() {
                   : convertToF(reading.max_temp, true)}
               </td>
               <td>
-                {" "}
                 {tempUnit === 0
                   ? reading.min_temp
                   : convertToF(reading.min_temp, true)}
+              </td>
+              <td>
+                {tempUnit === 0
+                  ? reading.max_gts_temp
+                  : convertToF(reading.max_gts_temp, true)}
+              </td>
+              <td>
+                {tempUnit === 0
+                  ? reading.min_gts_temp
+                  : convertToF(reading.min_gts_temp, true)}
               </td>
               <td>{reading.pressure}</td>
               <td>{reading.sunrise}</td>
