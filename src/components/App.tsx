@@ -32,6 +32,7 @@ const _Wrapper = styled.div`
   display: block;
   width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 `;
 

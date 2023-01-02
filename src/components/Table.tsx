@@ -8,14 +8,6 @@ const _Table = styled.table`
   border: 1px solid;
   border-radius: 4px;
 
-  caption {
-    caption-side: bottom;
-    margin-top: 1rem;
-    font-size: 87.5%;
-    text-align: left;
-    white-space: normal;
-  }
-
   tr {
     border-bottom: 1px solid #f5f5f580;
   }
@@ -31,13 +23,30 @@ const _Table = styled.table`
   }
 `;
 
+const _Caption = styled.caption`
+  caption-side: bottom;
+  margin-top: 1rem;
+  font-size: 87.5%;
+  text-align: left;
+  white-space: normal;
+`;
+
 function Table() {
+  /** Keep track of the current unit used to display the ATS and GTS. */
   const [tempUnit, setTempUnit] = useState(0);
 
+  /** Fetch data from the API. */
   const { data } = useGetWeatherQuery();
 
   /** Retrieve the 7 most recent weather readings. */
   const latest = data?.soles.slice(0, 7);
+
+  /**
+   * Switch the current temperature unit (Celsius ↔ Fahrenheit).
+   */
+  const switchTempUnit = () => {
+    setTempUnit(tempUnit === 0 ? 1 : 0);
+  };
 
   /**
    * Converts Celsius into Fahrenheit.
@@ -51,13 +60,6 @@ function Table() {
     return f;
   };
 
-  /**
-   * Switch the current temperature unit (Celsius ↔ Fahrenheit).
-   */
-  const switchTempUnit = () => {
-    setTempUnit(tempUnit === 0 ? 1 : 0);
-  };
-
   return (
     <_Table>
       <thead>
@@ -66,20 +68,18 @@ function Table() {
           <th>Earth Day</th>
           <th colSpan={2}>
             <span>
-              Air Temperature (
+              Air Temperature
               <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
-                °{tempUnit === 0 ? "C" : "F"}
+                &nbsp;(°{tempUnit === 0 ? "C" : "F"})
               </span>
-              )
             </span>
           </th>
           <th colSpan={2}>
             <span>
-              Ground Temperature (
+              Ground Temperature
               <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
-                °{tempUnit === 0 ? "C" : "F"}
+                &nbsp;(°{tempUnit === 0 ? "C" : "F"})
               </span>
-              )
             </span>
           </th>
           <th>Pressure (Pa)</th>
@@ -128,7 +128,8 @@ function Table() {
           );
         })}
       </tbody>
-      <caption>
+
+      <_Caption>
         Weather reported from the Gale crater by the Mars Curiosity Rover.{" "}
         <a
           href="https://mars.nasa.gov/msl/home/"
@@ -137,7 +138,7 @@ function Table() {
         >
           Read more
         </a>
-      </caption>
+      </_Caption>
     </_Table>
   );
 }
