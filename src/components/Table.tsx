@@ -31,7 +31,7 @@ const _Table = styled.table`
   }
 `;
 
-function WeatherTable() {
+function Table() {
   const [tempUnit, setTempUnit] = useState(0);
 
   const { data } = useGetWeatherQuery();
@@ -62,9 +62,9 @@ function WeatherTable() {
     <_Table>
       <thead>
         <tr>
-          <th title={data?.descriptions.sol_desc_en}>Sol</th>
-          <th title={data?.descriptions.terrestrial_date_desc_en}>Earth Day</th>
-          <th title={data?.descriptions.temp_desc_en} colSpan={2}>
+          <th>Sol</th>
+          <th>Earth Day</th>
+          <th colSpan={2}>
             <span>
               Air Temperature (
               <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
@@ -73,7 +73,7 @@ function WeatherTable() {
               )
             </span>
           </th>
-          <th title={data?.descriptions.gts_temp_desc_en} colSpan={2}>
+          <th colSpan={2}>
             <span>
               Ground Temperature (
               <span style={{ cursor: "pointer" }} onClick={switchTempUnit}>
@@ -82,9 +82,9 @@ function WeatherTable() {
               )
             </span>
           </th>
-          <th title={data?.descriptions.pressure_desc_en}>Pressure (Pa)</th>
-          <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunrise</th>
-          <th title={data?.descriptions.sunrise_sunset_desc_en}>Sunset</th>
+          <th>Pressure (Pa)</th>
+          <th>Sunrise</th>
+          <th>Sunset</th>
         </tr>
         <tr>
           <th colSpan={2}></th>
@@ -142,4 +142,4 @@ function WeatherTable() {
   );
 }
 
-export default WeatherTable;
+export default Table;

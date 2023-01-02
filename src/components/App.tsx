@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
-import WeatherTable from "./WeatherTable";
+import Table from "./Table";
 
 const _Main = styled.main`
   height: 100%;
@@ -55,7 +55,7 @@ function App() {
         <>
           <_Title>The Last 7 Days on Mars</_Title>
           <_Wrapper>
-            <WeatherTable />
+            <Table />
           </_Wrapper>
         </>
       ) : (
