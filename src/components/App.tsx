@@ -41,6 +41,8 @@ const _Title = styled.h1`
   align-self: flex-start;
   color: #f6d365;
   font-size: 3rem;
+  margin: 0;
+  margin-bottom: 1rem;
   background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   -webkit-background-clip: text;
   background-clip: text;

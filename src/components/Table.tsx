@@ -25,7 +25,7 @@ const _Table = styled.table`
 
 const _Caption = styled.caption`
   caption-side: bottom;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 87.5%;
   text-align: left;
   white-space: normal;
@@ -128,7 +128,6 @@ function Table() {
           );
         })}
       </tbody>
-
       <_Caption>
         Weather reported from the Gale crater by the Mars Curiosity Rover.{" "}
         <a
