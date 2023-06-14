@@ -1,4 +1,5 @@
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import { Analytics } from "@vercel/analytics/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { NASA } from "./api";
@@ -10,5 +11,6 @@ ReactDOM.createRoot(document.getElementById("app") as HTMLElement).render(
     <ApiProvider api={NASA}>
       <App />
     </ApiProvider>
+    <Analytics />
   </React.StrictMode>
 );
