@@ -1,35 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { useGetWeatherQuery } from "../api";
-
-const _Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid;
-  border-radius: 4px;
-
-  tr {
-    border-bottom: 1px solid #f5f5f580;
-  }
-
-  th,
-  td {
-    padding: 0.5rem 0.75rem;
-  }
-
-  th + th,
-  td + td {
-    border-left: 1px solid #f5f5f580;
-  }
-`;
-
-const _Caption = styled.caption`
-  caption-side: bottom;
-  margin-top: 0.5rem;
-  font-size: 87.5%;
-  text-align: left;
-  white-space: normal;
-`;
 
 function Table() {
   /** Keep track of the current unit used to display the ATS and GTS. */
@@ -61,7 +31,7 @@ function Table() {
   };
 
   return (
-    <_Table>
+    <table id="mars-table" className="w-full border-collapse border rounded">
       <thead>
         <tr>
           <th>Sol</th>
@@ -128,7 +98,7 @@ function Table() {
           );
         })}
       </tbody>
-      <_Caption>
+      <caption className="caption-bottom mt-2 text-md text-left whitespace-normal">
         Weather reported from the Gale crater by the Mars Curiosity Rover.{" "}
         <a
           href="https://mars.nasa.gov/msl/home/"
@@ -137,8 +107,8 @@ function Table() {
         >
           Read more
         </a>
-      </_Caption>
-    </_Table>
+      </caption>
+    </table>
   );
 }
 
