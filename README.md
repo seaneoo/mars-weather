@@ -8,9 +8,7 @@
 Laboratory (MSL) API to retrieve weather readings reported by the Curiosity rover. You can read more about MSL and
 Curiosity rover on [NASA.gov](https://mars.nasa.gov/msl/home/).
 
-## Gallery
-
-![](https://i.imgur.com/SwAmJQJ.png)
+![](.github/assets/mars-weather-10_7_24.png)
 
 ## Attributions
 
