@@ -1,4 +1,4 @@
-import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { Analytics } from "@vercel/analytics/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
