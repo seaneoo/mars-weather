@@ -12,6 +12,12 @@ Curiosity rover on [NASA.gov](https://mars.nasa.gov/msl/home/).
 
 ![](https://i.imgur.com/SwAmJQJ.png)
 
+## Attributions
+
+### Logo
+
+[Mars SVG Vector designed by Good Stuff No Nonsense and obtained from SVG Repo.](https://www.svgrepo.com/svg/440497/mars)
+
 ## License
 
 [MIT](LICENSE)
