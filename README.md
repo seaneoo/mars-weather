@@ -1,6 +1,6 @@
 # Mars Weather
 
-![GitHub issues](https://img.shields.io/github/issues/seaneoo/mars?style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/seaneoo/mars?style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/seaneoo/mars?style=flat-square) ![License](https://img.shields.io/github/license/seaneoo/mars?color=9c9c9c&style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/seaneoo/mars-weather?style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/seaneoo/mars-weather?style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/seaneoo/mars-weather?style=flat-square) ![License](https://img.shields.io/github/license/seaneoo/mars-weather?color=9c9c9c&style=flat-square)
 
 ## About
 
