@@ -14,6 +14,10 @@ Curiosity rover on [NASA.gov](https://mars.nasa.gov/msl/home/).
 
 ## Attributions
 
+### Data
+
+[Data is obtained from NASA MSL.](https://science.nasa.gov/mission/msl-curiosity/)
+
 ### Logo
 
 [Mars SVG Vector designed by Good Stuff No Nonsense and obtained from SVG Repo.](https://www.svgrepo.com/svg/440497/mars)
