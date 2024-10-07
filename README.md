@@ -1,6 +1,12 @@
-# Mars Weather
+![Mars Weather](.github/assets/gh_banner.png)
 
-![GitHub issues](https://img.shields.io/github/issues/seaneoo/mars-weather?style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/seaneoo/mars-weather?style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/seaneoo/mars-weather?style=flat-square) ![License](https://img.shields.io/github/license/seaneoo/mars-weather?color=9c9c9c&style=flat-square)
+<!--suppress HtmlDeprecatedAttribute -->
+<div align="center">
+<img alt="GitHub open issues" src="https://img.shields.io/github/issues/seaneoo/mars-weather?style=flat-square">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/seaneoo/mars-weather?style=flat-square">
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/seaneoo/mars-weather?style=flat-square">
+<img alt="GitHub license" src="https://img.shields.io/github/license/seaneoo/mars-weather?style=flat-square">
+</div>
 
 ## About
 
@@ -8,7 +14,7 @@
 Laboratory (MSL) API to retrieve weather readings reported by the Curiosity rover. You can read more about MSL and
 Curiosity rover on [NASA.gov](https://mars.nasa.gov/msl/home/).
 
-![](.github/assets/mars-weather-10_7_24.png)
+![](.github/assets/mars-weather-10_7_24-2.png)
 
 ## Attributions
 
